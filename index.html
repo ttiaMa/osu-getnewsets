@@ -53,6 +53,7 @@ function loadTags() {
         for (const element of splittedtags) {
         url = firsthalf.concat(element);
         url = url.concat(secondhalf);
+        url = url.replace(/ /g, '%20');
         document.getElementById("urls").innerHTML += `<a href='${url}' target='_blank'>${element}</a><br>`;
         document.getElementById("links").innerHTML += `${url}<br>`;
     }
