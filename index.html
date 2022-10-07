@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Mathia - new sets finder</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+<h2>find new sets in osu!</h2>
+<p>add your tags, <b>one per line</b>, to find new wip and pending maps<br>
+    <i>this is useful bc osu! sucks and resets filters in your query when searching for maps</i><br>
+    i use this to find new sets going for ranked and ask if i can do gds<br>
+</p>
+
+<p><textarea id="tags" style="width:50%;height:200px;font-size:14pt;" ></textarea></p>
+<p><button id="load" onclick="javascript:loadTags();" class="button-6">load tags</button> <button id="clear" onclick="javascript:eraseTags();" class="button-6">clear</button></p>
+
+<p id="urls"></p>
+<output id="links"></output>
+
+<p>copy and paste here:</p>
+<iframe src="https://url-opener.com/" width="50%" height="500" style="border:1px solid black;"></iframe>
+
+<script>
+document.getElementById('tags').value = 'yoasobi\nzutomayo\nthank you scientist';
+//const tags = ["yoasobi", "zutomayo", "meramipop"];
+const firsthalf = "https://osu.ppy.sh/beatmapsets?m=0&q=";
+const secondhalf = "&sort=updated_desc&s=any";
+
+/*
+    old code that didnt use textarea 
+
+for (const element of tags){
+    url = firsthalf.concat(element);
+    url = url.concat(secondhalf);
+    document.getElementById("urls").innerHTML += `<a href='${url}' target='_blank'>${element}</a><br>`;
+    document.getElementById("links").innerHTML += `${url}<br>`;
+}
+*/
+
+function eraseTags() {
+    document.getElementById("tags").value = "";
+}
+
+function loadTags() {
+    resetAll(); 
+    var alltags = document.getElementById("tags").value;
+    var splittedtags = alltags.split("\n");
+    console.log(splittedtags);
+
+        for (const element of splittedtags) {
+        url = firsthalf.concat(element);
+        url = url.concat(secondhalf);
+        document.getElementById("urls").innerHTML += `<a href='${url}' target='_blank'>${element}</a><br>`;
+        document.getElementById("links").innerHTML += `${url}<br>`;
+    }
+}
+
+function resetAll() {
+    document.getElementById("urls").innerHTML ="";
+    document.getElementById("links").innerHTML ="";
+}
+</script>
+
+</body>
+</html>
