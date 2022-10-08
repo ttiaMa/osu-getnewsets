@@ -46,6 +46,17 @@ iframe {
   filter: invert(1);
 }
 
+.codebox {
+  /* Below are styles for the codebox (not the code itself) */
+  border:1px solid black;
+  border-radius: .25rem;
+  background-color:#353535;
+  width:50%; 
+  padding:5px;
+  font-size:0.9em;
+  display: inline-block;
+}
+
 .button-6 {
   align-items: center;
   background-color: #FFFFFF;
