@@ -18,13 +18,13 @@
 <p><button id="load" onclick="javascript:loadTags();" class="button-6">load tags</button> <button id="clear" onclick="javascript:eraseTags();" class="button-6">clear</button></p>
 
 <p id="urls"></p>
-<output id="links"></output>
+<p class="codebox"><code id="links"></code></p>
 
 <p>copy and paste here:</p>
 <iframe src="https://url-opener.com/" width="50%" height="500" style="border:1px solid black;"></iframe>
 
 <script>
-document.getElementById('tags').value = 'yoasobi\nzutomayo\nthank you scientist';
+document.getElementById('tags').value = ["yoasobi\nzutomayo\nyousei teikoku"];
 //const tags = ["yoasobi", "zutomayo", "meramipop"];
 const firsthalf = "https://osu.ppy.sh/beatmapsets?m=0&q=";
 const secondhalf = "&sort=updated_desc&s=any";
@@ -45,10 +45,13 @@ function eraseTags() {
 }
 
 function loadTags() {
-    resetAll(); 
+    resetAll();
+
+    
+
     var alltags = document.getElementById("tags").value;
     var splittedtags = alltags.split("\n");
-    console.log(splittedtags);
+    //console.log(splittedtags);
 
         for (const element of splittedtags) {
         url = firsthalf.concat(element);
@@ -63,6 +66,7 @@ function resetAll() {
     document.getElementById("urls").innerHTML ="";
     document.getElementById("links").innerHTML ="";
 }
+
 </script>
 
 </body>
